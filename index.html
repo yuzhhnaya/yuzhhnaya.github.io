@@ -1,0 +1,805 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portfolio | Ксения — контент-менеджер / SMM</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+
+    <!-- Font Awesome 6 (с иконкой turn-down-right) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-page: #fffcf2;
+            --accent: #fa9500;
+            --accent-dark: #e07e00;
+            --text: #2a2a28;
+            --border-light: #ebe9e2;
+            --white: #ffffff;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: "Montserrat", sans-serif;
+            background: var(--bg-page);
+            color: var(--text);
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: 0.2s ease;
+        }
+
+        img {
+            width: 100%;
+            display: block;
+        }
+
+        .container {
+            width: min(1100px, 92%);
+            margin: 0 auto;
+        }
+
+        /* HEADER */
+
+        header {
+            padding: 24px 0 16px;
+            background: var(--bg-page);
+            position: relative;
+            z-index: 10;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: flex-start;
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+        }
+
+        .nav-left {
+            display: flex;
+            gap: 36px;
+        }
+
+        .nav a {
+            color: var(--text);
+            font-weight: 500;
+            padding: 4px 0;
+        }
+
+        .nav a:hover {
+            color: var(--accent);
+        }
+
+        /* HERO */
+
+        .hero-title {
+            font-size: clamp(50px, 10vw, 110px);
+            line-height: 0.95;
+            font-weight: 500;
+            color: var(--text);
+            margin: 16px 0 48px;
+            letter-spacing: -3px;
+            max-width: 800px;
+        }
+
+        /* ABOUT - асимметрия */
+
+        .about {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 40px;
+            align-items: start;
+            margin-bottom: 64px;
+        }
+
+        .about-image img {
+            object-fit: cover;
+        }
+
+        .name-text {
+            font-size: clamp(22px, 3.5vw, 32px);
+            font-weight: 600;
+            margin-bottom: 86px;
+            color: var(--text);
+        }
+
+        .section-title {
+            font-size: clamp(28px, 4vw, 40px);
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: var(--text);
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        /* Стрелка turn-down-right — изящная, с длинными линиями */
+        .section-title i {
+            font-size: 0.7em;
+            color: var(--accent);
+            font-weight: 300;
+            transform: translateY(2px);
+        }
+
+        .about-text p {
+            font-size: 15px;
+            line-height: 1.7;
+            margin-bottom: 20px;
+            color: var(--text);
+        }
+
+        .about-meta {
+            margin-top: 28px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px 24px;
+        }
+
+        .meta-item {
+            font-size: 18px;
+            text-transform: uppercase;
+            color: var(--accent-dark);
+            font-weight: 500;
+            letter-spacing: 0.5px;
+        }
+
+        /* SKILLS */
+
+        .skills {
+            margin-bottom: 80px;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 48px;
+            margin-top: 32px;
+        }
+
+        .skills-box h3 {
+            margin-bottom: 20px;
+            font-size: 18px;
+            font-weight: 600;
+            text-transform: uppercase;
+            color: var(--text);
+            letter-spacing: 1px;
+        }
+
+        .tools {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .tool {
+            width: 52px;
+            height: 52px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: transparent;
+            color: var(--text);
+            font-size: 24px;
+            transition: 0.2s ease;
+            cursor: pointer;
+        }
+
+        .tool:hover {
+            color: var(--accent);
+            transform: translateY(-2px);
+        }
+
+        .knowledge {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .knowledge span {
+            padding: 8px 0;
+            color: var(--text);
+            font-size: 15px;
+            font-weight: 400;
+            transition: 0.2s ease;
+            cursor: pointer;
+            border-bottom: 1px solid transparent;
+        }
+
+        .knowledge span:hover {
+            color: var(--accent);
+            border-bottom-color: var(--accent);
+        }
+
+        .tool.custom-tool img {
+            width: 26px;
+            height: 26px;
+            object-fit: contain;
+            filter: brightness(0) saturate(100%) invert(45%) sepia(0%) saturate(0%) brightness(95%) contrast(85%);
+            transition: 0.2s ease;
+        }
+
+        .tool.custom-tool:hover img {
+            filter: brightness(0) saturate(100%) invert(55%) sepia(95%) saturate(1500%) hue-rotate(350deg) brightness(100%) contrast(101%);
+        }
+
+        /* PORTFOLIO - асимметрия */
+
+        .portfolio {
+            margin-bottom: 80px;
+        }
+
+        .portfolio-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 56px;
+            margin-top: 32px;
+        }
+
+        .category-group {
+            width: 100%;
+        }
+
+        .category-header {
+            display: flex;
+            align-items: baseline;
+            gap: 16px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .category-title {
+            font-size: 18px;
+            font-weight: 600;
+            text-transform: uppercase;
+            color: var(--text);
+            letter-spacing: 1.5px;
+        }
+
+        .category-title i {
+            color: var(--accent);
+            margin-right: 10px;
+            font-size: 16px;
+        }
+
+        /* Статьи — равномерная сетка 2 колонки */
+        .articles-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+        }
+
+        .articles-column {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        /* Посты — 3 колонки с разной шириной */
+        .posts-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr 0.8fr;
+            gap: 20px;
+        }
+
+        .link-card {
+            display: block;
+            padding: 10px 0;
+            border-bottom: 1px solid var(--border-light);
+            transition: 0.2s ease;
+        }
+
+        .link-card:hover {
+            border-bottom-color: var(--accent);
+            transform: translateX(4px);
+        }
+
+        .link-title {
+            font-size: 15px;
+            font-weight: 500;
+            line-height: 1.5;
+            color: var(--text);
+            display: inline;
+        }
+
+        .link-card:hover .link-title {
+            color: var(--accent);
+        }
+
+        .link-meta {
+            font-size: 13px;
+            color: var(--text);
+            display: block;
+            margin-top: 6px;
+        }
+
+        /* CONTACT - асимметрия */
+
+        .contact {
+            margin-bottom: 64px;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr 0.8fr;
+            gap: 32px;
+            margin-top: 32px;
+            align-items: start;
+        }
+
+        .contact-card h3 {
+            font-size: 15px;
+            margin-bottom: 16px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text);
+            font-weight: 500;
+        }
+
+        .contact-card p {
+            color: var(--text);
+            line-height: 1.7;
+            margin-bottom: 6px;
+            font-size: 15px;
+        }
+
+        .contact-card a {
+            color: var(--text);
+            transition: 0.2s ease;
+        }
+
+        .contact-card a:hover {
+            color: var(--accent);
+        }
+
+        .contact-icon {
+            font-size: 28px;
+            color: var(--accent);
+            margin-bottom: 14px;
+        }
+
+        /* FOOTER */
+
+        footer {
+            border-top: 1px solid var(--border-light);
+            padding: 28px 0 32px;
+            background: var(--bg-page);
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            font-size: 13px;
+        }
+
+        .footer-title {
+            font-weight: 600;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            color: var(--text);
+            font-size: 12px;
+            letter-spacing: 1px;
+        }
+
+        .footer-links {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            color: var(--text);
+        }
+
+        .footer-links a:hover {
+            color: var(--accent);
+        }
+
+        /* ANIMATION */
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: 0.8s ease;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* RESPONSIVE */
+
+        @media (max-width: 1024px) {
+            .articles-grid {
+                grid-template-columns: 1fr;
+                gap: 0;
+            }
+
+            .posts-grid {
+                grid-template-columns: 1fr;
+                gap: 0;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .about {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav {
+                justify-content: center;
+            }
+
+            .nav-left {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 24px;
+            }
+
+            .hero-title {
+                margin: 20px 0 40px;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div class="container">
+            <nav class="nav">
+                <div class="nav-left">
+                    <a href="#about">Обо мне</a>
+                    <a href="#skills">Навыки</a>
+                    <a href="#portfolio">Портфолио</a>
+                    <a href="#contact">Контакты</a>
+                </div>
+            </nav>
+
+            <h1 class="hero-title reveal">Портфолио</h1>
+        </div>
+    </header>
+
+    <main>
+
+        <!-- ABOUT -->
+
+        <section class="about container reveal" id="about">
+            <div class="about-image">
+                <img src="images/ava.jpg" alt="Portrait">
+            </div>
+
+            <div class="about-content">
+                <div class="name-text">Ксения, 25
+                    <br>
+                    Контент-менеджер | SMM
+                </div>
+                <div class="section-title">
+                    Обо мне
+                    <i class="fa-regular fa-turn-down-right"></i>
+                </div>
+
+                <div class="about-text">
+                    <p>
+                        Контент-специалист с навыками SMM и опытом работы в сфере B2B MarTech.
+                        Веду полный цикл создания контента: от разработки стратегии и медиаплана до написания текстов,
+                        создания рубрик, визуала и адаптации материалов под разные digital-площадки.
+                    </p>
+
+                    <p>
+                        Люблю свою работу за возможность превращать сложные идеи в понятный, живой и вовлекающий
+                        контент, который помогает брендам говорить с аудиторией на одном языке.
+                    </p>
+
+                    <div class="about-meta">
+                        <span class="meta-item">Контент-стратегия</span>
+                        <span class="meta-item">SMM</span>
+                        <span class="meta-item">Копирайтинг</span>
+                        <span class="meta-item">Визуал</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SKILLS -->
+
+        <section class="skills container reveal" id="skills">
+            <div class="section-title">
+                Инструменты
+                <i class="fa-regular fa-turn-down-right"></i>
+            </div>
+
+            <div class="skills-grid">
+
+                <div class="skills-box">
+                    <h3>Работаю с</h3>
+                    <div class="tools">
+                        <div class="tool custom-tool">
+                            <img src="images/tgstat_logo.png" alt="TGStat">
+                        </div>
+                        <div class="tool"><i class="fa-brands fa-figma"></i></div>
+                        <div class="tool custom-tool">
+                            <img src="images/heygen_logo.png" alt="Heygen">
+                        </div>
+                        <div class="tool custom-tool">
+                            <img src="images/chatgpt_logo.png" alt="ChatGPT">
+                        </div>
+                        <div class="tool custom-tool">
+                            <img src="images/deepseek_logo.png" alt="DeepSeek">
+                        </div>
+                        <div class="tool custom-tool">
+                            <img src="images/claude_logo.png" alt="Claude">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="skills-box">
+                    <h3>Знания</h3>
+                    <div class="knowledge">
+                        <span>Цифровой маркетинг</span>
+                        <span>Маркетинговые коммуникации</span>
+                        <span>Копирайтинг</span>
+                        <span>SMM стратегия</span>
+                        <span>Аналитика</span>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- PORTFOLIO -->
+
+        <section class="portfolio container reveal" id="portfolio">
+
+            <div class="section-title">
+                Портфолио
+                <i class="fa-regular fa-turn-down-right"></i>
+            </div>
+
+            <div class="portfolio-grid">
+
+                <!-- СТАТЬИ - равномерная сетка 2x3 -->
+                <div class="category-group">
+                    <div class="category-header">
+                        <div class="category-title">
+                            <i class="fa-regular fa-newspaper"></i> Статьи
+                        </div>
+                    </div>
+
+                    <div class="articles-grid">
+                        <div class="articles-column">
+                            <a href="https://altcraft.com/ru/blog/chyornaya-pyatnica-strategiya-effektivnyh-rassylok"
+                                class="link-card" target="_blank">
+                                <span class="link-title">Чёрная пятница: стратегия эффективных рассылок</span>
+                                <span class="link-meta">Altcraft Blog</span>
+                            </a>
+                            <a href="https://altcraft.com/ru/blog/kak-sdelat-pop-up-effektivnym" class="link-card"
+                                target="_blank">
+                                <span class="link-title">Как сделать поп-ап эффективным</span>
+                                <span class="link-meta">Altcraft Blog</span>
+                            </a>
+                            <a href="https://altcraft.com/ru/blog/marketingovye-scenarii-razdrazhayushchie-polzovatelej"
+                                class="link-card" target="_blank">
+                                <span class="link-title">Маркетинговые сценарии, раздражающие пользователей</span>
+                                <span class="link-meta">Altcraft Blog</span>
+                            </a>
+                        </div>
+                        <div class="articles-column">
+                            <a href="https://altcraft.com/ru/blog/ii-servisy-v-marketinge" class="link-card"
+                                target="_blank">
+                                <span class="link-title">ИИ-сервисы в маркетинге</span>
+                                <span class="link-meta">Altcraft Blog</span>
+                            </a>
+                            <a href="https://altcraft.com/ru/blog/email-i-push-rassylki" class="link-card"
+                                target="_blank">
+                                <span class="link-title">Email и push-рассылки</span>
+                                <span class="link-meta">Altcraft Blog</span>
+                            </a>
+                            <a href="https://altcraft.com/ru/blog/triggernye-rassylki-kak-oni-pomogayut-prodavat"
+                                class="link-card" target="_blank">
+                                <span class="link-title">Триггерные рассылки: как помогают продавать</span>
+                                <span class="link-meta">Altcraft Blog</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ПОСТЫ В СОЦСЕТЯХ - асимметричная сетка 3 колонки разной ширины -->
+                <div class="category-group">
+                    <div class="category-header">
+                        <div class="category-title">
+                            <i class="fa-regular fa-message"></i> Посты в соцсетях
+                        </div>
+                    </div>
+
+                    <div class="posts-grid">
+                        <div class="posts-column">
+                            <a href="https://t.me/kraftovyj_marketing/1631" class="link-card" target="_blank">
+                                <span class="link-title"> Продуктовый пост #1</span>
+                                <span class="link-meta">Telegram</span>
+                            </a>
+                            <a href="https://t.me/kraftovyj_marketing/1717" class="link-card" target="_blank">
+                                <span class="link-title"> Продуктовый пост #2</span>
+                                <span class="link-meta">Telegram</span>
+                            </a>
+                            <a href="https://t.me/kraftovyj_marketing/1770" class="link-card" target="_blank">
+                                <span class="link-title"> Продуктовый пост #3</span>
+                                <span class="link-meta">Telegram</span>
+                            </a>
+                        </div>
+                        <div class="posts-column">
+                            <a href="https://t.me/altcraft_whatsnew/93" class="link-card" target="_blank">
+                                <span class="link-title">Altcraft: новости продукта</span>
+                                <span class="link-meta">Telegram</span>
+                            </a>
+                            <a href="https://t.me/kraftovyj_marketing/1631" class="link-card" target="_blank">
+                                <span class="link-title">Вебинар #1</span>
+                                <span class="link-meta">Telegram</span>
+                            </a>
+                            <a href="https://t.me/kraftovyj_marketing/1668" class="link-card" target="_blank">
+                                <span class="link-title">Вебинар #2</span>
+                                <span class="link-meta">Telegram</span>
+                            </a>
+                        </div>
+                        <div class="posts-column">
+                            <a href="https://t.me/kraftovyj_marketing/1645" class="link-card" target="_blank">
+                                <span class="link-title">Креатив: подборка идей #1</span>
+                                <span class="link-meta">Telegram</span>
+                            </a>
+                            <a href="https://t.me/kraftovyj_marketing/1702" class="link-card" target="_blank">
+                                <span class="link-title">Креатив: подборка идей #2</span>
+                                <span class="link-meta">Telegram</span>
+                            </a>
+                            <a href="https://t.me/kraftovyj_marketing/1821" class="link-card" target="_blank">
+                                <span class="link-title">Креатив: подборка идей #3</span>
+                                <span class="link-meta">Telegram</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- CONTACT -->
+
+        <section class="contact container reveal" id="contact">
+
+            <div class="section-title">
+                Контакты
+                <i class="fa-regular fa-turn-down-right"></i>
+            </div>
+
+            <div class="contact-grid">
+
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <i class="fa-regular fa-envelope"></i>
+                    </div>
+                    <h3>Email</h3>
+                    <p><a href="mailto:ksusha_rzn@mail.ru">ksusha_rzn@mail.ru</a></p>
+                </div>
+
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <i class="fa-regular fa-message"></i>
+                    </div>
+                    <h3>Соцсети</h3>
+                    <p><a href="https://t.me/yuzhhnaya" target="_blank">Telegram: @yuzhhnaya</a></p>
+                    <p><a href="https://instagram.com/yuzhhnaya" target="_blank">Instagram: @yuzhhnaya</a></p>
+                </div>
+
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <i class="fa-solid fa-phone"></i>
+                    </div>
+                    <h3>Связаться</h3>
+                    <p><a href="tel:+79156170304">+7 (915) 617-03-04</a></p>
+                    <p>Рязань, Россия</p>
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+
+    <footer>
+        <div class="container footer-grid">
+
+            <div>
+                <div class="footer-title">Соцсети</div>
+                <div class="footer-links">
+                    <a href="https://instagram.com/yuzhhnaya" target="_blank">Instagram</a>
+                    <a href="https://t.me/yuzhhnaya" target="_blank">Telegram</a>
+                </div>
+            </div>
+
+            <div>
+                <div class="footer-title">Контакты</div>
+                <div class="footer-links">
+                    <a href="https://t.me/yuzhhnaya" target="_blank">Telegram</a>
+                    <a href="tel:+79156170304">+7 (915) 617-03-04</a>
+                    <a href="mailto:ksusha_rzn@mail.ru">ksusha_rzn@mail.ru</a>
+                </div>
+            </div>
+
+            <div>
+                <div class="footer-title">Портфолио</div>
+                <div class="footer-links">
+                    <span>© 2026 Ксения</span>
+                    <span>Все права защищены</span>
+                </div>
+            </div>
+
+        </div>
+    </footer>
+
+    <script>
+        const reveals = document.querySelectorAll(".reveal");
+
+        function revealSections() {
+            const triggerBottom = window.innerHeight * 0.85;
+            reveals.forEach(section => {
+                const top = section.getBoundingClientRect().top;
+                if (top < triggerBottom) {
+                    section.classList.add("active");
+                }
+            });
+        }
+
+        window.addEventListener("scroll", revealSections);
+        revealSections();
+
+        document.querySelectorAll('.nav a[href^="#"]').forEach(link => {
+            link.addEventListener('click', function (e) {
+                const href = this.getAttribute('href');
+                if (href && href !== '#0' && href !== '#') {
+                    e.preventDefault();
+                    const target = document.querySelector(href);
+                    if (target) {
+                        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }
+                }
+            });
+        });
+    </script>
+
+</body>
+
+</html>
